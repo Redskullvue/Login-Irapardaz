@@ -1,5 +1,10 @@
 # login-irapardaz
+##User & Pass : 
+```
+UserName : eve.holt@reqres.in
 
+passWord : cityslicka
+```
 ## Project setup
 ```
 npm install
