@@ -60,7 +60,11 @@ export default {
   },
   //Here We Request for all of the users list
   async mounted() {
-    const resp = await this.$axios.get("http://localhost:8080/api/users");
+    const resp = await this.$axios
+      .get("http://localhost:8080/api/users")
+      .catch((err) => {
+        console.log(err);
+      });
     this.users = resp.data.data;
   },
   methods: {
@@ -84,7 +88,7 @@ export default {
           //This is for a loading effect on page so the promis can be fulfiled
           setInterval(() => {
             this.isLoading = false;
-          }, 2000);
+          }, 1000);
         })
         .catch((err) => {
           console.log(err);
@@ -126,6 +130,9 @@ export default {
   background-color: #282b4e;
   color: #fff;
   cursor: pointer;
+}
+.loading {
+  animation: load 1s infinite steps(20);
 }
 a {
   text-decoration: none;
