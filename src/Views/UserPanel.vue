@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <div v-if="!this.$store.state.loggedIn">
+    <!-- <div>
       <p>
         You Need To be Logged In first before you can view this page
         <router-link style="color: blue" to="/">Log In</router-link>
       </p>
-    </div>
+    </div> -->
     <user-search @search-user="searchList" class="search-input" />
 
-    <div v-if="this.$store.state.loggedIn">
+    <div>
       <div v-if="isLoading" class="loading">Loading ...</div>
 
       <div class="user__container">
@@ -70,6 +70,7 @@ export default {
   methods: {
     //Here we find out what profile our user is searching and we return it's ID
     async searchList(text) {
+      //change var name
       var newArray = this.users.filter(function (item) {
         return (
           item.first_name == text ||

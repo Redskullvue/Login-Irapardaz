@@ -42,8 +42,8 @@ export default {
   name: "YContainer",
   data() {
     return {
-      userName: "",
-      userPassWord: "",
+      userName: "eve.holt@reqres.in",
+      userPassWord: "cityslicka",
       showError: false,
     };
   },
@@ -53,7 +53,7 @@ export default {
 
     submitForm() {
       this.$axios
-        .post("http://localhost:8080/api/login", {
+        .post("api/login", {
           email: this.userName,
           password: this.userPassWord,
         })
@@ -62,6 +62,7 @@ export default {
           console.log(res);
           this.$router.push("/panel");
           this.$store.commit("logStat");
+          localStorage.loggedInToken = res.data.token;
         })
         //Handeling the Errors in this part
         .catch((err) => {
@@ -71,6 +72,7 @@ export default {
           this.userPassWord = "";
         });
     },
+    //remove
     checkUserStatus() {
       this.$emit("loggedStat", this.loggedIn);
     },
